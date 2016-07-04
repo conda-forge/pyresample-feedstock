@@ -1,4 +1,4 @@
-{% set version = "1.1.6" %}
+{% set version = "1.2.4" %}
 
 package:
     name: pyresample
@@ -6,8 +6,8 @@ package:
 
 source:
     fn: pyresample-{{ version }}.tar.gz
-    url: https://pypi.python.org/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
-    md5: 1f1b0cbf8a104b082ee742418d0bb07a
+    url: https://github.com/pytroll/pyresample/archive/v{{ version }}.tar.gz
+    sha256: 48f0b07314fcfc7a9fc0a70e892b6bd3df9f0c6f463c1e746d4f6cfd9a5136f9
 
 build:
     number: 0
@@ -17,14 +17,18 @@ requirements:
     build:
         - python
         - setuptools
+        - numpy x.x
     run:
         - python
         - scipy
         - pyproj
-        - numpy
+        - numpy x.x
         - configobj
         - pykdtree  # [not win]
         - numexpr
+        - matplotlib
+        - basemap
+        - pillow
 
 test:
     imports:
