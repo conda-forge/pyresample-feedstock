@@ -1,0 +1,14 @@
+--- setup.py	2016-06-27 04:24:27.000000000 -0300
++++ setup.py	2016-07-25 11:35:59.502152124 -0300
+@@ -36,9 +36,8 @@
+     requirements.append('multiprocessing')
+ 
+ extensions = [
+-    Extension("pyresample.ewa._ll2cr", sources=["pyresample/ewa/_ll2cr.pyx"],
+-              extra_compile_args=["-O3", "-Wno-unused-function"]),
+-    Extension("pyresample.ewa._fornav", sources=["pyresample/ewa/_fornav.pyx", "pyresample/ewa/_fornav_templates.cpp"], language="c++", extra_compile_args=["-O3", "-Wno-unused-function"],
++    Extension("pyresample.ewa._ll2cr", sources=["pyresample/ewa/_ll2cr.pyx"]),
++    Extension("pyresample.ewa._fornav", sources=["pyresample/ewa/_fornav.pyx", "pyresample/ewa/_fornav_templates.cpp"], language="c++",
+               depends=["pyresample/ewa/_fornav_templates.h"])
+ ]
+ 
