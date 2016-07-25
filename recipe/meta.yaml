@@ -8,9 +8,11 @@ source:
     fn: pyresample-{{ version }}.tar.gz
     url: https://github.com/pytroll/pyresample/archive/v{{ version }}.tar.gz
     sha256: 48f0b07314fcfc7a9fc0a70e892b6bd3df9f0c6f463c1e746d4f6cfd9a5136f9
+    patches:
+        - wrong_options.patch  # [win]
 
 build:
-    number: 0
+    number: 1
     script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -18,6 +20,7 @@ requirements:
         - python
         - setuptools
         - numpy x.x
+        - cython
     run:
         - python
         - scipy
@@ -33,6 +36,8 @@ requirements:
 test:
     imports:
         - pyresample
+    commands:
+        - conda inspect linkages -n _test pyresample  # [linux]
 
 about:
   home: https://github.com/mraspaud/pyresample/
