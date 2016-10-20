@@ -1,4 +1,4 @@
-{% set version = "1.2.5" %}
+{% set version = "1.2.6" %}
 
 package:
     name: pyresample
@@ -7,7 +7,7 @@ package:
 source:
     fn: pyresample-{{ version }}.tar.gz
     url: https://github.com/pytroll/pyresample/archive/v{{ version }}.tar.gz
-    sha256: b4c8be42f2423eb50ab0345054d4ade7c7b275c250b826433817aba014a537f5
+    sha256: 8a0da50582358933d3fd0c88ca2cad1ba572dc19fc4474b0c3ccaed448dee768
 
 build:
     number: 0
@@ -35,7 +35,7 @@ test:
         - pyresample
 
 about:
-  home: https://github.com/mraspaud/pyresample/
+  home: https://github.com/pytroll/pyresample/
   license: LGPL-3.0
   summary: Resampling of remote sensing data in Python
 
