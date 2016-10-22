@@ -1,7 +1,7 @@
 About pyresample
 ================
 
-Home: https://github.com/mraspaud/pyresample/
+Home: https://github.com/pytroll/pyresample/
 
 Package license: LGPL-3.0
 
