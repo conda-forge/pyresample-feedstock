@@ -33,7 +33,6 @@ conda search pyresample --channel conda-forge
 ```
 
 
-
 About conda-forge
 =================
 
