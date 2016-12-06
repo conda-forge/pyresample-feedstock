@@ -1,4 +1,4 @@
-{% set version = "1.2.7" %}
+{% set version = "1.2.8" %}
 
 package:
     name: pyresample
@@ -7,7 +7,7 @@ package:
 source:
     fn: pyresample-{{ version }}.tar.gz
     url: https://github.com/pytroll/pyresample/archive/v{{ version }}.tar.gz
-    sha256: 3b4630d07ea384a031fb581f33cd426ce0b6a92431fcecfd8134a39756aa859d
+    sha256: 307008629aea3237db01608ebbcba11644e613993db368d46ad556faeabf246a
 
 build:
     number: 0
