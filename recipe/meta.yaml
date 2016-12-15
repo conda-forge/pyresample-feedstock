@@ -1,45 +1,46 @@
-{% set version = "1.2.8" %}
+{% set version = "1.2.9" %}
 
 package:
-    name: pyresample
-    version: {{ version }}
+  name: pyresample
+  version: {{ version }}
 
 source:
-    fn: pyresample-{{ version }}.tar.gz
-    url: https://github.com/pytroll/pyresample/archive/v{{ version }}.tar.gz
-    sha256: 307008629aea3237db01608ebbcba11644e613993db368d46ad556faeabf246a
+  fn: pyresample-{{ version }}.tar.gz
+  url: https://github.com/pytroll/pyresample/archive/v{{ version }}.tar.gz
+  sha256: 7b3e9dcb9fac9ee5e6a6402888cafa701710523406b4289d9f8c538b7e0669ab
 
 build:
-    number: 0
-    script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-    build:
-        - python
-        - setuptools
-        - numpy x.x
-    run:
-        - python
-        - scipy
-        - pyproj
-        - numpy x.x
-        - configobj
-        - pykdtree
-        - numexpr
-        - matplotlib
-        - basemap
-        - pillow
+  build:
+    - python
+    - setuptools
+    - numpy x.x
+  run:
+    - python
+    - scipy
+    - pyproj
+    - numpy x.x
+    - configobj
+    - pykdtree
+    - numexpr
+    - matplotlib
+    - basemap
+    - pillow
 
 test:
-    imports:
-        - pyresample
+  imports:
+    - pyresample
 
 about:
   home: https://github.com/pytroll/pyresample/
   license: LGPL-3.0
-  summary: Resampling of remote sensing data in Python
+  license_file: LICENSE.txt
+  summary: 'Resampling of remote sensing data in Python.'
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
-        - davidh-ssec
+  recipe-maintainers:
+    - ocefpaf
+    - davidh-ssec
