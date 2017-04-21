@@ -14,7 +14,7 @@ config=$(cat <<CONDARC
 
 channels:
  - conda-forge
- - defaults
+ - defaults # As we need conda-build
 
 conda-build:
  root-dir: /feedstock_root/build_artefacts
@@ -24,14 +24,12 @@ show_channel_urls: true
 CONDARC
 )
 
-rm -f "$FEEDSTOCK_ROOT/build_artefacts/conda-forge-build-done"
-
 cat << EOF | docker run -i \
-                        -v "${RECIPE_ROOT}":/recipe_root \
-                        -v "${FEEDSTOCK_ROOT}":/feedstock_root \
+                        -v ${RECIPE_ROOT}:/recipe_root \
+                        -v ${FEEDSTOCK_ROOT}:/feedstock_root \
                         -a stdin -a stdout -a stderr \
                         condaforge/linux-anvil \
-                        bash || exit 1
+                        bash || exit $?
 
 export BINSTAR_TOKEN=${BINSTAR_TOKEN}
 export PYTHONUNBUFFERED=1
@@ -43,7 +41,14 @@ conda clean --lock
 conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
 
-# Embarking on 6 case(s).
+# Embarking on 12 case(s).
+    set -x
+    export CONDA_NPY=110
+    export CONDA_PY=27
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
     set -x
     export CONDA_NPY=111
     export CONDA_PY=27
@@ -54,6 +59,34 @@ source run_conda_forge_build_setup
     set -x
     export CONDA_NPY=112
     export CONDA_PY=27
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
+    set -x
+    export CONDA_NPY=110
+    export CONDA_PY=34
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
+    set -x
+    export CONDA_NPY=111
+    export CONDA_PY=34
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
+    set -x
+    export CONDA_NPY=112
+    export CONDA_PY=34
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
+    set -x
+    export CONDA_NPY=110
+    export CONDA_PY=35
     set +x
     conda build /recipe_root --quiet || exit 1
     upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
@@ -73,6 +106,13 @@ source run_conda_forge_build_setup
     upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
 
     set -x
+    export CONDA_NPY=110
+    export CONDA_PY=36
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
+    set -x
     export CONDA_NPY=111
     export CONDA_PY=36
     set +x
@@ -85,11 +125,4 @@ source run_conda_forge_build_setup
     set +x
     conda build /recipe_root --quiet || exit 1
     upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
-touch /feedstock_root/build_artefacts/conda-forge-build-done
 EOF
-
-# double-check that the build got to the end
-# see https://github.com/conda-forge/conda-smithy/pull/337
-# for a possible fix
-set -x
-test -f "$FEEDSTOCK_ROOT/build_artefacts/conda-forge-build-done" || exit 1
