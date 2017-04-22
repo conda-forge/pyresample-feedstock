@@ -10,7 +10,7 @@ source:
   sha256: 7fb9451bc3095816f30d5dc371820286bcef5d2f9cd2fe73f4f27565a3f7a9c4
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -26,9 +26,6 @@ requirements:
     - configobj
     - pykdtree
     - numexpr
-    - matplotlib
-    - basemap
-    - pillow
 
 test:
   imports:
