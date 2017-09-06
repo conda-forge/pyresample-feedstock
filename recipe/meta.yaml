@@ -5,24 +5,27 @@ package:
   version: {{ version }}
 
 source:
-  fn: pyresample-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
   sha256: e3ecf8ed448bb53f8f05599fb0a35f33728916a725dac059a3e47fd58bc89bf8
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
     - python
     - setuptools
-    - numpy x.x
+    - numpy 1.8.*  # [not (win and (py35 or py36))]
+    - numpy 1.9.*  # [win and py35]
+    - numpy 1.11.*  # [win and py36]
   run:
     - python
+    - numpy >=1.8  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
     - scipy
     - pyproj
-    - numpy x.x
     - configobj
     - pykdtree
     - numexpr
@@ -31,6 +34,9 @@ requirements:
 test:
   imports:
     - pyresample
+  commands:
+    - conda inspect linkages -p $PREFIX pyresample  # [not win]
+    - conda inspect objects -p $PREFIX pyresample   # [osx]
 
 about:
   home: https://github.com/pytroll/pyresample/
