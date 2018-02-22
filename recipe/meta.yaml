@@ -1,4 +1,4 @@
-{% set version = "1.7.1" %}
+{% set version = "1.8.1" %}
 
 package:
   name: pyresample
@@ -6,37 +6,32 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
-  sha256: fe5a9e66181d79a60b4d15bc1a5e93f0cb84e739bf4343aa1e7392d1226a2dc3
+  sha256: d82fd3c53528198414210eae530a99cbe48d21d8929111183700ef17bfd42e86
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - pip
+    - numpy 1.11.*
   run:
     - python
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
-    - scipy
-    - pyproj
+    - pyproj >=1.9.5.1
+    - numpy >=1.11
     - configobj
-    - pykdtree
-    - numexpr
+    - pykdtree >=1.1.1
     - pyyaml
+    - six
 
 test:
   imports:
     - pyresample
   commands:
-    - conda inspect linkages -p $PREFIX pyresample  # [not win]
-    - conda inspect objects -p $PREFIX pyresample   # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]
 
 about:
   home: https://github.com/pytroll/pyresample/
