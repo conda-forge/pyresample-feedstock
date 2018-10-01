@@ -7,7 +7,7 @@ Package license: LGPL-3.0
 
 Feedstock license: BSD 3-Clause
 
-Summary: Resampling of remote sensing data in Python.
+Summary: Resampling of remote sensing data in Python
 
 
 
