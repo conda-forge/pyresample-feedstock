@@ -21,7 +21,6 @@ requirements:
     - python
     - pip
     - numpy
-    - cython
   run:
     - python
     - pyproj >=1.9.5.1
