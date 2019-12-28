@@ -38,6 +38,7 @@ test:
     - pyresample.gradient._gradient_search
   requires:
     - dask
+    - xarray
 
 about:
   home: https://github.com/pytroll/pyresample/
