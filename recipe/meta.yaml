@@ -36,6 +36,8 @@ test:
     - pyresample.ewa._ll2cr
     - pyresample.ewa._fornav
     - pyresample.gradient._gradient_search
+  requires:
+    - dask
 
 about:
   home: https://github.com/pytroll/pyresample/
