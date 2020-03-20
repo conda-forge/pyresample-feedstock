@@ -1,4 +1,4 @@
-{% set version = "1.14.0" %}
+{% set version = "1.15.0" %}
 
 package:
   name: pyresample
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
-  sha256: 92c418f164957d9d497e314ab1de5cec7bd75744fa391781bb8965bb4fd3142e
+  sha256: bd9113734b2f66ddce4bdb401f600e9fbda4633444437796cdb135afbbde95fb
 
 build:
-  number: 2
-  skip: True  # [win and vc<14]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  number: 0
+  skip: true  # [win and vc<14]
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   build:
@@ -44,7 +44,7 @@ about:
   home: https://github.com/pytroll/pyresample/
   license: LGPL-3.0
   license_file: LICENSE.txt
-  summary: 'Resampling of remote sensing data in Python'
+  summary: Resampling of remote sensing data in Python
 
 extra:
   recipe-maintainers:
