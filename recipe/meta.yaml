@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [win and vc<14]
+  skip: true  # [py2k]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
