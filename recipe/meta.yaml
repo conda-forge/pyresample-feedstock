@@ -9,7 +9,7 @@ source:
   sha256: 92c418f164957d9d497e314ab1de5cec7bd75744fa391781bb8965bb4fd3142e
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win and vc<14]
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
@@ -23,7 +23,7 @@ requirements:
     - numpy
   run:
     - python
-    - pyproj >=1.9.5.1
+    - pyproj >=1.9.5.1,<2.6
     - {{ pin_compatible('numpy') }}
     - configobj
     - pykdtree >=1.3.1
