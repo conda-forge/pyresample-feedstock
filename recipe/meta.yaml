@@ -21,12 +21,13 @@ requirements:
     - python
     - pip
     - numpy
+    - cython
   run:
     - python
     - configobj
     - numpy >=1.10.0
     - pykdtree >=1.3.1
-    - pyproj >=1.9.5.1
+    - pyproj >=2.3.0
     - pyyaml
     - setuptools >=3.2
     - {{ pin_compatible('numpy') }}
