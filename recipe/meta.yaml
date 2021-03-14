@@ -44,8 +44,6 @@ test:
     - dask
     - xarray
     - shapely
-  commands:
-    - pip check
 
 about:
   home: https://github.com/pytroll/pyresample/
