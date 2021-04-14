@@ -132,6 +132,7 @@ Installing `pyresample` from the `conda-forge` channel can be achieved by adding
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `pyresample` can be installed with:
