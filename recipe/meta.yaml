@@ -31,6 +31,7 @@ requirements:
     - pyyaml
     - setuptools >=3.2
     - {{ pin_compatible('numpy') }}
+    - importlib_metadata  # [py<310]
 
 test:
   imports:
