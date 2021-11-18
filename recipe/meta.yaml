@@ -1,4 +1,4 @@
-{% set version = "1.22.0" %}
+{% set version = "1.22.1" %}
 
 package:
   name: pyresample
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
-  sha256: 2066414842903564024dadb19565c617e4d1882b80289acad55f4a394bad9159
+  sha256: 7a6067f11e5d936cccb53501ca3a3c13f96dc9812267faba14fb3cfa56e0663c
 
 build:
   number: 0
