@@ -1,4 +1,4 @@
-{% set version = "1.23.0" %}
+{% set version = "1.24.0" %}
 
 package:
   name: pyresample
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
-  sha256: 497f98985bbd27329be32f4864a1fd2469fd9272a5a98df50d47200b6b3a436d
+  sha256: 503ef98e494f3dc28e2d09d5e6a954f92a9fff403357e3c57171fa137fe47fd5
 
 build:
-  number: 1
-  skip: true  # [py2k]
+  number: 0
+  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -21,11 +21,13 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - versioneer-518
   host:
     - python
     - pip
     - numpy
     - cython
+    - versioneer-518
   run:
     - python
     - configobj
