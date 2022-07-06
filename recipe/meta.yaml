@@ -21,11 +21,13 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - versioneer-518
   host:
     - python
     - pip
     - numpy
     - cython
+    - versioneer-518
   run:
     - python
     - configobj
