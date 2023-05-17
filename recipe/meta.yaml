@@ -1,4 +1,4 @@
-{% set version = "1.26.1" %}
+{% set version = "1.27.0" %}
 
 package:
   name: pyresample
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pyresample/pyresample-{{ version }}.tar.gz
-  sha256: aa079f2e15b968685f365400e76b2dfe0f3e3b085f40090658497642b13fadbf
+  sha256: d378008a6a5bd28bb6757003ea7e3a0d0171e3f408e64afe1cafa1cfefee85da
 
 build:
   number: 0
@@ -29,6 +29,7 @@ requirements:
     - cython
     - versioneer-518
   run:
+    - importlib-metadata
     - python
     - setuptools >=3.2
     - pyproj >=3.0
