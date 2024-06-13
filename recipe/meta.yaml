@@ -9,7 +9,7 @@ source:
   sha256: 96b41e8da3b7e7900fc399d867033147c39512774b427bd05b561781a668ae3a
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -20,6 +20,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - versioneer-518
   host:
@@ -40,7 +41,6 @@ requirements:
     - pyyaml
     - shapely
     - numpy >=1.10.0
-    - {{ pin_compatible('numpy') }}
     - importlib_metadata  # [py<310]
 
 test:
