@@ -29,6 +29,7 @@ requirements:
     - numpy
     - cython
     - versioneer-518
+    - setuptools
   run:
     - donfig
     - platformdirs
@@ -41,7 +42,7 @@ requirements:
     - pyyaml
     - shapely
     - numpy >=1.21.0
-    - importlib_metadata  # [py<310]
+    - importlib-metadata  # [py<310]
 
 test:
   imports:
