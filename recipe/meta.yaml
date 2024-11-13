@@ -49,6 +49,7 @@ test:
     - pyresample.bilinear
     - pyresample.ewa._ll2cr
     - pyresample.ewa._fornav
+    # requires dask
     - pyresample.gradient._gradient_search
   requires:
     - pip
@@ -57,8 +58,6 @@ test:
     - shapely
   commands:
     - pip check
-  requires:
-    - pip
 
 about:
   home: https://github.com/pytroll/pyresample/
