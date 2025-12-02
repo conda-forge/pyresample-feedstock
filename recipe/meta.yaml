@@ -1,5 +1,5 @@
 {% set name = "pyresample" %}
-{% set version = "1.34.2" %}
+{% set version = "1.35.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyresample-{{ version }}.tar.gz
-  sha256: 094e959e3e31a547d39ce1a940e5cdb23845a5c458a0fc244f2e4e5135e4f797
+  sha256: 95f64734d63632ca642bc7bf4bce057c2ecac60f05fafd73c881bf68403ab5bb
 
 build:
   skip: true  # [py<311]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -35,13 +35,11 @@ requirements:
     - python
     - configobj
     - donfig
-    - importlib-metadata  # [py<310]
-    - numpy >=1.21.0
+    - numpy >=1.25.0
     - platformdirs
     - pykdtree >=1.3.1
     - pyproj >=3.0
     - pyyaml
-    - setuptools >=3.2
     - shapely
 
 test:
